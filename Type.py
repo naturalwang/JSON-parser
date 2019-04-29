@@ -11,5 +11,4 @@ class Type(Enum):
     bracketRight = 6    # ]
     number = 7          # 169
     string = 8          # "name"
-    null = 9            # null
-    boolean = 10        # true false
+    keyword = 9         # true / false / null

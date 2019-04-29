@@ -1,10 +1,9 @@
-from Type import Type
+from type import Type
 
 
 class Token(object):
     def __init__(self, token_type, token_value):
         super(Token, self).__init__()
-        # 用表驱动法处理 if
         d = {
             ':': Type.colon,
             ',': Type.comma,
@@ -20,4 +19,19 @@ class Token(object):
         self.value = token_value
 
     def __repr__(self):
-        return '({})'.format(self.value)
+        # return '<{}>: ({})'.format(self.type, self.value)
+        return '{}'.format(self.value)
+
+    def valueByType(self):
+        value = self.value
+        if self.type == Type.number:
+            return int(value) if '.' not in value else float(value)
+        elif self.type == Type.keyword:
+            keywords = {
+                'true': True,
+                'false': False,
+                'null': None,
+            }
+            return keywords[value]
+        else:
+            return value
